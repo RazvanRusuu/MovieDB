@@ -1,0 +1,40 @@
+.single-movie {
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 10rem 5%;
+}
+
+.img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.info {
+  justify-self: center;
+}
+
+.info span {
+  display: block;
+  font-size: 1.4rem;
+}
+
+.info span:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.info p {
+  margin-bottom: 3rem;
+  font-size: 1.6rem;
+  line-height: 1.7;
+}
+
+@media screen and (max-width: 56.25em) {
+  .img {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 37.5em) {
+  .img {
+    width: 80%;
+  }
+}

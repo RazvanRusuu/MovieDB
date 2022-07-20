@@ -1,0 +1,42 @@
+.form {
+  position: relative;
+  margin-top: 5rem;
+}
+.form-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(color-grey-2);
+  width: 20rem;
+  margin: 0 auto;
+
+  border-bottom: 1px solid var(--main-color-5);
+}
+
+.input {
+  font-family: inherit;
+  font-size: 1.6rem;
+  color: var(--main-color-5);
+}
+.input:focus {
+  outline: none;
+}
+
+.search-btn,
+.input {
+  background: none;
+  border: none;
+  padding: 0.5rem 1rem;
+}
+
+.search-btn {
+  font-size: 1.6rem;
+  color: var(--main-color-5);
+}
+.error {
+  position: absolute;
+  bottom: -2rem;
+  padding-left: 1rem;
+  font-size: 1.5rem;
+  color: #fc6018;
+}

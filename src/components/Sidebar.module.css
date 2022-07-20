@@ -1,0 +1,71 @@
+.aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  padding: 2rem 0;
+  background-color: var(--color-dark-grey);
+
+  transition: var(--transition);
+  transform: translateX(-100%);
+}
+.show {
+  transform: translateX(0);
+}
+
+.header {
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn-toggle {
+  font-size: 2rem;
+  color: var(--main-color-5);
+}
+
+.logo {
+  font-size: 3rem;
+  color: var(--main-color-5);
+  font-weight: 500;
+  font-style: italic;
+}
+
+.logo > span {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  color: var(--color-white);
+}
+
+.nav {
+  padding-top: 10rem;
+}
+.nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.nav li {
+  padding: 1rem 0;
+  transition: var(--transition);
+}
+.nav li:hover {
+  background-color: var(--main-color-5);
+  padding-left: 2rem;
+}
+
+.nav li a:link,
+.nav li a:visited {
+  text-decoration: none;
+  color: var(--main-color-5);
+  font-size: 2rem;
+  transition: var(--transition);
+}
+
+.nav li:hover a {
+  color: var(--color-white);
+}
