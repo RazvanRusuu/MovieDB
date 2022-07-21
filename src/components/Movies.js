@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import classes from "./Movies.module.css";
 import { useMovieContext } from "../store/context";
@@ -6,7 +6,28 @@ import Movie from "./Movie";
 import Loading from "../components/Loading";
 
 const Movies = () => {
-  const { movies, isLoading } = useMovieContext();
+  const { movies, isLoading, favorites, addToFavoritesHandler, touched } =
+    useMovieContext();
+
+  const setLocalStorage = () =>
+    localStorage.setItem("movies", JSON.stringify(favorites));
+
+  useEffect(() => {
+    const moviesInLocalStorage = localStorage.getItem("movies");
+    const savedMoviesInLocalStorage = moviesInLocalStorage
+      ? JSON.parse(moviesInLocalStorage)
+      : [];
+    addToFavoritesHandler(savedMoviesInLocalStorage);
+  }, []);
+
+  useEffect(() => {
+    if (favorites.length > 0) {
+      setLocalStorage();
+    }
+    if (favorites.length === 0 && touched) {
+      setLocalStorage();
+    }
+  }, [favorites]);
 
   if (isLoading) {
     return <Loading />;

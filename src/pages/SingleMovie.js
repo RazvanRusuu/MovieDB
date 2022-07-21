@@ -30,9 +30,32 @@ const SingleMovie = () => {
       ? "https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png"
       : img;
 
+  const styles = {
+    body: {
+      color: " var(--color-white)",
+      fontFamily: "'Roboto', sans-serif",
+      backgroundImage: `linear-gradient(
+        135deg,
+        var(--color-grey-opacity-1),
+        var(--color-grey-opacity-2)
+      ),
+      url(${img})`,
+      backgroundPosition: "center",
+      backgroundSize: "cover",
+    },
+  };
+
+  const body = document.querySelector("body");
+
   useEffect(() => {
     fetchSingleMovie(movieId);
   }, [movieId]);
+
+  useEffect(() => {
+    for (let [att, prop] of Object.entries(styles.body)) {
+      body.style[att] = prop;
+    }
+  }, [img]);
 
   if (singleMovieLoading) {
     return <Loading />;

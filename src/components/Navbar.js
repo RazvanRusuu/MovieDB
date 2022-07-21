@@ -22,7 +22,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link className={classes.link} to={"/favourite"}>
+            <Link className={classes.link} to={"/favorite"}>
               Favorite
             </Link>
           </li>

@@ -1,70 +1,7 @@
 import React, { useContext, useEffect, useReducer } from "react";
 
+import reducer from "../reducer/reducer";
 import { URL_API as url } from "../utilities";
-
-const movieReducer = (state, action) => {
-  if (action.type === "OPEN_SIDEBAR") {
-    return { ...state, isSidebarOpen: true };
-  }
-
-  if (action.type === "CLOSE_SIDEBAR") {
-    return { ...state, isSidebarOpen: false };
-  }
-
-  if (action.type === "LOAD_MOVIES") {
-    return { ...state, error: { ...state.error }, isLoading: true };
-  }
-
-  if (action.type === "MOVIES_SUCCESS") {
-    return {
-      ...state,
-      error: {
-        show: false,
-        msg: "",
-      },
-      movies: action.payload,
-      isLoading: false,
-    };
-  }
-
-  if (action.type === "MOVIES_ERROR") {
-    return {
-      ...state,
-      movies: [],
-      isLoading: false,
-      error: { show: true, msg: action.payload },
-    };
-  }
-
-  if (action.type === "LOAD_SINGLE_MOVIE") {
-    return { ...state, error: { ...state.error }, singleMovieLoading: true };
-  }
-
-  if (action.type === "SINGLE_MOVIE_SUCCESS") {
-    return {
-      ...state,
-      error: { ...state.error },
-      movie: action.payload,
-      singleMovieLoading: false,
-      singleMovieError: false,
-    };
-  }
-
-  if (action.type === "SINGLE_MOVIE_ERROR") {
-    return {
-      ...state,
-      singleMovieError: true,
-      error: { ...state.error },
-      singleMovieLoading: false,
-    };
-  }
-
-  if (action.type === "TYPING") {
-    return { ...state, query: action.payload };
-  }
-
-  return state;
-};
 
 const initialState = {
   isSidebarOpen: false,
@@ -78,6 +15,8 @@ const initialState = {
   },
   movies: [],
   query: "top gun",
+  favorites: [],
+  touched: false,
 };
 
 const MovieContext = React.createContext({
@@ -86,7 +25,7 @@ const MovieContext = React.createContext({
 });
 
 const MovieProvider = (props) => {
-  const [state, dispatch] = useReducer(movieReducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const fetchMovies = async (url) => {
     dispatch({ type: "LOAD_MOVIES" });
@@ -137,6 +76,10 @@ const MovieProvider = (props) => {
     dispatch({ type: "TYPING", payload: query });
   };
 
+  const addToFavoritesHandler = (movie) => {
+    dispatch({ type: "ADD_TO_FAVORITES", payload: movie });
+  };
+
   const { query } = state;
 
   useEffect(() => {
@@ -151,6 +94,7 @@ const MovieProvider = (props) => {
         closeSidebar,
         changeInputHandler,
         fetchSingleMovie,
+        addToFavoritesHandler,
       }}
     >
       {props.children}
