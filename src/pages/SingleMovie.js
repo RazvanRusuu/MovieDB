@@ -32,7 +32,7 @@ const SingleMovie = () => {
 
   const styles = {
     body: {
-      color: " var(--color-white)",
+      color: "var(--color-white)",
       fontFamily: "'Roboto', sans-serif",
       backgroundImage: `linear-gradient(
         135deg,

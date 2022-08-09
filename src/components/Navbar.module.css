@@ -1,5 +1,4 @@
 .header {
-  padding: 0 5%;
   max-width: 120rem;
   margin: 0 auto;
 }
@@ -28,13 +27,15 @@
   list-style: none;
   display: flex;
   gap: 2rem;
+  text-transform: uppercase;
 }
 
 .link:link,
 .link:visited {
   text-decoration: none;
   color: var(--main-color-5);
-  font-size: 2rem;
+  font-size: 1.6rem;
+  letter-spacing: 2px;
   border-bottom: 3px solid transparent;
   padding-bottom: 0.5rem;
   transition: var(--transition);

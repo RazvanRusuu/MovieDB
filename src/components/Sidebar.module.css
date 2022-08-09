@@ -10,6 +10,7 @@
 
   transition: var(--transition);
   transform: translateX(-100%);
+  z-index: 99;
 }
 .show {
   transform: translateX(0);
@@ -50,20 +51,39 @@
   gap: 2rem;
 }
 .nav li {
-  padding: 1rem 0;
   transition: var(--transition);
+
+  position: relative;
 }
-.nav li:hover {
+
+.nav li::before {
+  content: "";
+  width: 3px;
+  height: 100%;
   background-color: var(--main-color-5);
-  padding-left: 2rem;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  transform: scale(0);
+  transition: transform 0.4s, width 0.2s 0.4s;
+}
+.nav li:hover::before {
+  transform: scale(1);
+  width: 100%;
 }
 
 .nav li a:link,
 .nav li a:visited {
+  padding: 1rem 2rem;
   text-decoration: none;
   color: var(--main-color-5);
   font-size: 2rem;
   transition: var(--transition);
+  display: block;
+  position: relative;
+  z-index: 999;
 }
 
 .nav li:hover a {

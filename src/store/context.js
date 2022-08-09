@@ -16,7 +16,6 @@ const initialState = {
   movies: [],
   query: "top gun",
   favorites: [],
-  touched: false,
 };
 
 const MovieContext = React.createContext({

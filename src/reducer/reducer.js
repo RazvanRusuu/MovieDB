@@ -18,7 +18,7 @@ const movieReducer = (state, action) => {
         show: false,
         msg: "",
       },
-      movies: action.payload,
+      movies: [...action.payload],
       isLoading: false,
     };
   }
@@ -62,7 +62,6 @@ const movieReducer = (state, action) => {
         ...state,
         error: { ...state.error },
         favorites: [...action.payload],
-        touched: true,
       };
     }
     const existingMovie = state.favorites.find(

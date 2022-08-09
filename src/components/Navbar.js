@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { BiMenu } from "react-icons/bi";
-import SearchForm from "./SearchForm";
 import classes from "./Navbar.module.css";
 import { useMovieContext } from "../store/context";
 
@@ -22,8 +21,8 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link className={classes.link} to={"/favorite"}>
-              Favorite
+            <Link className={classes.link} to={"/favorites"}>
+              Favorites
             </Link>
           </li>
         </ul>

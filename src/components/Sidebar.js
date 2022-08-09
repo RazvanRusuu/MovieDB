@@ -29,10 +29,14 @@ const Sidebar = () => {
       <nav className={classes.nav}>
         <ul>
           <li>
-            <Link to={"/home"}>Home</Link>
+            <Link to={"/home"} onClick={closeSidebar}>
+              Home
+            </Link>
           </li>
           <li>
-            <Link to={"/favorites"}>Favorite</Link>
+            <Link to={"/favorites"} onClick={closeSidebar}>
+              Favorites
+            </Link>
           </li>
         </ul>
       </nav>

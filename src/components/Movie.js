@@ -7,7 +7,7 @@ import { useMovieContext } from "../store/context";
 import classes from "./Movie.module.css";
 
 const Movie = (props) => {
-  const { addToFavoritesHandler, favorites, movies } = useMovieContext();
+  const { addToFavoritesHandler, favorites } = useMovieContext();
 
   const existingFavoriteMovie = favorites.find((movie) => {
     const { id } = movie;
@@ -18,6 +18,8 @@ const Movie = (props) => {
     const { id, title, poster } = props;
     addToFavoritesHandler({ id, title, poster });
   };
+
+  console.log(favorites);
 
   // fallback for N/A photo
   const src =
@@ -33,7 +35,7 @@ const Movie = (props) => {
 
       <div className={classes.info}>
         <h3 className="heading-tertiary">{props.title}</h3>
-        <span className={classes.year}>{props.year}</span>
+        <span className={classes.year}>{props.year || ""}</span>
       </div>
       <button
         className={`btn ${classes["btn-favorite"]}`}

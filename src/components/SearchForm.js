@@ -1,5 +1,4 @@
 import React from "react";
-import { FaSearch } from "react-icons/fa";
 
 import classes from "./SearchForm.module.css";
 import { useMovieContext } from "../store/context";
@@ -8,7 +7,7 @@ const SearchForm = () => {
   const {
     query,
     changeInputHandler,
-    error: { msg, show },
+    error: { msg, show: showErr },
   } = useMovieContext();
 
   const onChangeHandler = (e) => {
@@ -29,7 +28,7 @@ const SearchForm = () => {
           onChange={onChangeHandler}
           value={query}
         />
-        {show && <p className={classes.error}>{msg}</p>}
+        {showErr && <p className={classes.error}>{msg}</p>}
       </div>
     </form>
   );
