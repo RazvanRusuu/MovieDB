@@ -19,8 +19,6 @@ const Movie = (props) => {
     addToFavoritesHandler({ id, title, poster });
   };
 
-  console.log(favorites);
-
   // fallback for N/A photo
   const src =
     props.poster === "N/A"
